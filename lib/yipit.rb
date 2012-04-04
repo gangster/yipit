@@ -10,12 +10,13 @@ module Yipit
     # TODO:  Document.
     def initialize(*args)
       options = args.extract_options!
+      version = 'v1'
       @api_key = args[0]
-      @conn = Faraday.new(:url => "http://api.yipit.com") do |builder|
+      @conn = Faraday.new(:url => "http://api.yipit.com/#{version}") do |builder|
         builder.adapter Faraday.default_adapter
-        builder.adapter  :logger if options[:debug] == true
-        builder.use Faraday::Response::ParseJson
+        builder.use Faraday::Response::Logger if options[:debug] == true
         builder.use Faraday::Response::Mashify
+        builder.use Faraday::Response::ParseJson
       end
     end
 
@@ -47,8 +48,22 @@ module Yipit
     #   Get deal details
     #   @param [Fixnum] deal_id A Deal Id
     #   @return [Hashie::Mash] A Hashie::Mash object representing a Yipit deal
-    def deals(*args)
-      super
+    def deals(params=nil)
+      # so user can search for deals with no conditionals
+      if params.nil?
+        response = @conn.get("deals") { |req| req.params = { :key => @api_key } }
+        response.body.response.deals
+      # so user can search for deals with conditions
+      elsif params.is_a? Hash
+        params.merge!({:key => @api_key})
+        response = @conn.get("deals") { |req| req.params = params }
+        response.body.response.deals
+      # so user can search for specific deal by id with same method
+      elsif params.is_a? Fixnum
+        id = params
+        response = @conn.get('deals/#{id}') { |req| req.params = { :key => @api_key } }
+        response.body.response.deals[0]
+      end
     end
 
     # @overload sources(options={})
@@ -71,9 +86,12 @@ module Yipit
     def tags(*args)
       super
     end
-    def divisions(*args)
-      super
+
+    def divisions(params={})
+      params.merge!({:key => @api_key})
+      response = @conn.get('deals') { |req| req.params = params }
     end
+
     def businesses(*args)
       super
     end
