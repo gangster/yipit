@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "yipit/version"
 
 Gem::Specification.new do |s|
-  s.name        = "yipit"
+  s.name        = "yipit_n4l"
   s.version     = Yipit::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Josh Deeden", "Mark Coates"]
