@@ -6,25 +6,25 @@ Gem::Specification.new do |s|
   s.name        = "yipit"
   s.version     = Yipit::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Josh Deeden"]
-  s.email       = ["jdeeden@gmail.com"]
-  s.homepage    = "http://github.com/gangster/yipit"
+  s.authors     = ["Josh Deeden", "Mark Coates"]
+  s.email       = ["mark@nest4less.com"]
+  s.homepage    = "http://github.com/Nest4LessDev/yipit"
   s.summary     = %q{A simple wrapper for the Yipit API}
   s.description = %q{A simple wrapper for the Yipit API}
 
-  s.rubyforge_project = "yipit"
-  s.add_development_dependency('rake', '~> 0.8')
-  s.add_development_dependency('rspec', '~> 2.5')
-  s.add_development_dependency('simplecov', '~> 0.4')
-  s.add_development_dependency('vcr', '~> 1.7.0')
+  s.rubyforge_project = "yipit_n4l"
+  s.add_development_dependency('rake')
+  s.add_development_dependency('rspec')
+  s.add_development_dependency('simplecov')
+  s.add_development_dependency('vcr')
   s.add_development_dependency('fakeweb')
-  s.add_development_dependency('yard', '~> 0.6')
-  s.add_development_dependency('maruku', '~> 0.6')
-  s.add_runtime_dependency("faraday", '~> 0.5.7')
-  s.add_runtime_dependency("faraday_middleware", '~> 0.3.2')
-  s.add_runtime_dependency("typhoeus", '~> 0.2.4')
-  s.add_runtime_dependency('hashie', '~> 1.0.0')
-  s.add_runtime_dependency('multi_json', '~> 0.0.5')
+  s.add_development_dependency('yard')
+  s.add_development_dependency('maruku')
+  s.add_runtime_dependency("faraday")
+  s.add_runtime_dependency("faraday_middleware")
+  s.add_runtime_dependency("typhoeus")
+  s.add_runtime_dependency('hashie')
+  s.add_runtime_dependency('multi_json')
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
