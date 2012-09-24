@@ -14,7 +14,7 @@ With `gem install`:
 
 Or with bundler:
 
-		gem yipit_n4l, require: 'yipit'
+		gem "yipit_n4l", require: "yipit"
     
 ## Usage
 
