@@ -1,6 +1,7 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'core_ext/array'
+require 'hashie'
 
 module Yipit
   class Client
@@ -79,10 +80,12 @@ module Yipit
     end
 
     def method_missing(sym, *args, &block)
-      options = args.extract_options!.merge(:key => api_key)
+      options = args.extract_options!.merge(:key => api_key, :limit => 5000)
       response = conn.get("/v1/#{sym.to_s}/#{args[0]}") { |req| req.params = options  }
-      ret = response.body.response.send sym
-      args[0].nil? ? ret : ret.first if ret
+      puts response
+      ret = response.body['response']["#{sym.to_s}"]
+      mashes = ret.map{|h| Hashie::Mash.new(h)}
+      args[0].nil? ? mashes : mashes.first if mashes
     end
   end
 end

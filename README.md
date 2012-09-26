@@ -4,11 +4,17 @@ Simple Ruby wrapper for the Yipit [API](http://yipit.com/about/api_overview/). [
 
 ## Under development
 
-    This bitch ain't ready for production yet.  Recognize.
+    This fork of the Yipit Gem now works, but unless you are part of the secret sauce, you have **BEEN WARNED**.
 
 ## Installation
 
-    sudo gem install yipit
+With `gem install`:
+
+    gem install yipit_n4l
+
+Or with bundler:
+
+		gem "yipit_n4l", require: "yipit"
     
 ## Usage
 
@@ -35,7 +41,6 @@ Yipit uses a [`Hashie::Mash`](https://github.com/intridea/hashie) for return val
 
 * Initial version
 
-
 ## Under the hood
 * [`Faraday`](https://github.com/technoweenie/faraday) REST client
 * [`Hashie::Mash`](http://github.com/intridea/hashie)  Magic
@@ -50,4 +55,4 @@ Yipit uses a [`Hashie::Mash`](https://github.com/intridea/hashie) for return val
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-Copyright (c) 2011 [Josh Deeden](http://twitter.com/jdeeden). 
+Copyright (c) 2012 [Nest4Less, Inc.](http://nest4less.com). 
