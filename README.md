@@ -1,3 +1,7 @@
+## Note
+
+The canonical repository for the Yipit gem has been moved to: https://github.com/Nest4LessDev/yipit.git. This fork is no longer maintained.
+
 # Yipit
 
 Simple Ruby wrapper for the Yipit [API](http://yipit.com/about/api_overview/). [Yipit](http://yipit.com) features deals aggregated from a number of sources, includng Groupon, LivingSocial, Restaurants.com, and more.
